@@ -1,0 +1,62 @@
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    email VARCHAR UNIQUE NOT NULL,
+    password VARCHAR NOT NULL,
+    access_token VARCHAR,
+    token_expired_at TIMESTAMP,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMP
+);
+
+CREATE TABLE profile (
+    id SERIAL PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    name VARCHAR NOT NULL,
+    pic VARCHAR,
+    gender VARCHAR,
+    interest_in VARCHAR,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMP
+);
+
+CREATE TABLE liked (
+    id SERIAL PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    liked_user_id BIGINT NOT NULL,
+    is_super_liked BOOLEAN NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMP
+);
+
+CREATE TABLE matched (
+    id         SERIAL PRIMARY KEY,
+    user_a_id  BIGINT    NOT NULL,
+    user_b_id  BIGINT    NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMP
+);
+
+CREATE TABLE inventory (
+    id SERIAL PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    swipes SMALLINT DEFAULT 10 NOT NULL,
+    likes SMALLINT DEFAULT 10 NOT NULL,
+    super_likes SMALLINT DEFAULT 0 NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMP
+);
+
+CREATE TABLE notification (
+    id SERIAL PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    message VARCHAR NOT NULL,
+    is_read BOOLEAN NOT NULL, -- unread & read
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMP
+);
