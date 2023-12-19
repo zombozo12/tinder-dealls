@@ -11,7 +11,8 @@ Cases: Tinder-like API
 2. Run `misc/tinder.sql` file to create table
 3. Update `config.json` file with your database and redis configuration
 4. Run `go mod tidy` and `go mod vendor` to download all dependencies
-5. Run `go run main.go` to run the program
+5. Run `go run cmd/seeder/main.go` to seed the database
+6. Run `go run main.go` to run the program
 
 ## Configuration
 Configuration is stored in `config.json` file. You can change the configuration there.
