@@ -58,23 +58,21 @@ func (r recommendationServiceModule) GetRecommendation(ctx context.Context, user
 		return nil, err
 	}
 
-	var unmarshaledFrozenIds []int64
+	var unmarshalFrozenIds []int64
 	if frozenIDs != "" {
-		if err := json.Unmarshal([]byte(frozenIDs), &unmarshaledFrozenIds); err != nil {
+		if unmarshalErr := json.Unmarshal([]byte(frozenIDs), &unmarshalFrozenIds); err != nil {
 			tags["error"] = "failed unmarshal"
 			tags["status"] = "error"
-			return nil, err
+			return nil, unmarshalErr
 		}
 	}
 
 	var excludedIDs []int64
-	if len(unmarshaledFrozenIds) > 0 {
-		for _, v := range unmarshaledFrozenIds {
-			excludedIDs = append(excludedIDs, v)
-		}
+	if len(unmarshalFrozenIds) > 0 {
+		excludedIDs = append(excludedIDs, unmarshalFrozenIds...)
 	}
 
-	if lo.Contains(excludedIDs, userID) == false {
+	if !lo.Contains(excludedIDs, userID) {
 		excludedIDs = append(excludedIDs, userID)
 	}
 
