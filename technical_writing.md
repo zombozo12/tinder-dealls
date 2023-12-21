@@ -9,9 +9,8 @@
 | LinkedIn              | https://linkedin.com/in/wigunarrr          |
 
 ## Background / Problem Statement
-Tinder-like API is a technical test from Dealls. 
-This API is used to find a match between two users. 
-This API is built using Go and PostgreSQL.
+Tinder-like API is a technical test from Dealls. This API is using modified Clean Architecture that I learned when I was a Software Engineer at Tokopedia. 
+Using Golang, Redis, and PostgreSQL as the main technology stack, this API is a great example of how to create a great API using Golang.
 
 ## Goals
 1. Create a Tinder-like API
@@ -36,7 +35,7 @@ This API is built using Go and PostgreSQL.
     Redis is a great database for caching. I choose this database because it's fast and easy to use.
     I use redigo as the Redis driver for this project because it's fast and easy to use.
 
-### Non-Functional Requirements
+## Non-Functional Requirements
 1. Sanity
 
     I use `golangci-lint` to check the sanity of the code.
@@ -51,3 +50,5 @@ This API is built using Go and PostgreSQL.
 ## Test Cases
 ### Unit Test
 1. Test for authentication services
+2. Test for matcher services
+3. Test for recommendation services
