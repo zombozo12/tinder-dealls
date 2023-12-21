@@ -12,7 +12,8 @@ Cases: Tinder-like API
 3. Update `config.json` file with your database and redis configuration
 4. Run `go mod tidy` and `go mod vendor` to download all dependencies
 5. Run `go run cmd/seeder/main.go` to seed the database
-6. Run `go run main.go` to run the program
+6. All user's password is `password`
+7. Run `go run main.go` to run the program
 
 ## Configuration
 Configuration is stored in `config.json` file. You can change the configuration there.
@@ -78,6 +79,10 @@ tinder-dealls
     ├── profile.go
     └── recommendation.go
 ```
+
+## Testing
+### Unit Test
+To execute unit test, run `go test ./...` in the root directory.
 
 ## API Documentation
 ### Postman Collection
