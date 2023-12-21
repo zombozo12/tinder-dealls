@@ -61,7 +61,7 @@ func (r recommendationServiceModule) GetRecommendation(ctx context.Context, user
 
 	var unmarshalFrozenIds []int64
 	if frozenIDs != "" {
-		if unmarshalErr := json.Unmarshal([]byte(frozenIDs), &unmarshalFrozenIds); err != nil {
+		if unmarshalErr := json.Unmarshal([]byte(frozenIDs), &unmarshalFrozenIds); unmarshalErr != nil {
 			tags["error"] = "failed unmarshal"
 			tags["status"] = "error"
 			return nil, unmarshalErr
