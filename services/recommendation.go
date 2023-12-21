@@ -22,7 +22,8 @@ type RecommendationServiceInterface interface {
 	GetRecommendation(ctx context.Context, userID int64) (recommendation []domain.Profile, err error)
 }
 
-func NewRecommendationService(cfg *domain.Config, db *gorm.DB, redisRepo RedisRepoInterface, profileRepo ProfileRepoInterface) (RecommendationServiceInterface, error) {
+func NewRecommendationService(cfg *domain.Config, db *gorm.DB, redisRepo RedisRepoInterface,
+	profileRepo ProfileRepoInterface) (RecommendationServiceInterface, error) {
 	return &recommendationServiceModule{
 		cfg:         cfg,
 		db:          db,
